@@ -9,6 +9,7 @@ int main()
     int morte = 0;
     int jour = 0;
     int taille = 1;
+    int soif = 3;
     int engrait = 1;
     int argent = 10;
     Plante * plantee= new Plante("Plantee");
@@ -22,8 +23,10 @@ int main()
             if(choix1 == 1){
             myself->arroser(plantee);
             jour = jour + 1;
+            soif = soif -1;
             taille = taille + 1;
             plantee->afficher();
+            printf("ttttttttttt : %d\n",taille);
             }
              if(choix1 == 2){
             myself->couper(plantee);
@@ -34,6 +37,7 @@ int main()
              if(choix1 == 3){
             myself->nourrir(plantee);
             jour = jour + 1;
+            soif = soif + 2; 
             engrait = 0;
             plantee->afficher();
             }
@@ -60,14 +64,27 @@ int main()
             printf("\nVous etes fatiguer il est tant d'aller dormir\n ###  Le jour suivant ###\n  ##    Heure : 9H    ##\n\n\n");
             myself->nuiit(plantee);
             taille = taille + 1;
+            soif = soif + 2;
             jour = 0;
             plantee->afficher();
         }
+            if (taille == 3){
+        morte = 0;
+        printf("Votre plante est morte, elle etait trop grande, penser a la couper ");
+    }
+    if (soif == 6){
+        morte = 0;
+        printf("Votre plante est morte, elle etait trop arroser");
+    }
+    if (soif == 0){
+        morte = 0;
+        printf("Votre plante est morte, elle etait trop seche, penser a l'arroser");
+    }
+    if (morte == 0){
+            return 0;
     }
     }
-    if (taille == 3){
-        morte == 0;
-        printf("Votre plante est morte");
     }
-    return 0;
+
+
 }
